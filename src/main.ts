@@ -138,11 +138,11 @@ const unitTwo: Unit = {
 
 // print unitOne out on the page
 const unitWeight = document.querySelector('.unitWeight') as HTMLElement;
-unitWeight.innerHTML = `${unitOne.type} <br> ${unitOne.options}`;
+unitWeight.innerHTML = `${unitOne.type}`;
 
 // print unitTwo out on the page
 const unitLiquid = document.querySelector('.unitLiquid') as HTMLElement;
-unitLiquid.innerHTML = `${unitTwo.type} <br> ${unitTwo.options}`;
+unitLiquid.innerHTML = `${unitTwo.type}`;
 
 
 
@@ -158,6 +158,21 @@ const convertToWeight = document.querySelector('#convertToWeight') as HTMLSelect
 
 // inputs
 const amountWeight = document.querySelector('#amountWeight') as HTMLInputElement;
+
+// amount
+const amountLabel = document.querySelector('label[for="amountWeight"]') as HTMLLabelElement;
+
+// update input placeholder and label
+const updateAmountLabel = () => {
+  const selectedUnit = convertFromWeight.options[convertFromWeight.selectedIndex].text;
+  amountWeight.placeholder = `Enter amount in ${selectedUnit}`;
+};
+
+// update on selection change
+convertFromWeight.addEventListener('change', updateAmountLabel);
+
+// initial update
+updateAmountLabel();
 
 // list results
 const ulWeight = document.querySelector('ul')!;
@@ -230,7 +245,7 @@ formWeight.addEventListener('submit', (e: Event) => {
   listWeight.render(doc, convertFromWeight.value, 'end')
 
 
-  
+
   console.log(doc);
 })
 
@@ -250,6 +265,18 @@ const amountLiquid = document.querySelector('#amountLiquid') as HTMLInputElement
 // list results in ul with a class of .result-list-liquid
 const ulLiquid = document.querySelector('.result-list-liquid') as HTMLUListElement;
 const listLiquid = new listResults(ulLiquid);
+
+// update input placeholder and label 
+const updateAmountLabelLiquid = () => {
+  const selectedUnit = convertFromLiquid.options[convertFromLiquid.selectedIndex].text;
+  amountLiquid.placeholder = `Enter amount in ${selectedUnit}`;
+};
+
+// update on selection change
+convertFromLiquid.addEventListener('change', updateAmountLabelLiquid);
+
+// initial update
+updateAmountLabelLiquid();
 
 
 // prints out the result of the convert and keeps the result in the list

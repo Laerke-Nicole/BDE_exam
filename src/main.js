@@ -119,10 +119,10 @@ var unitTwo = {
 };
 // print unitOne out on the page
 var unitWeight = document.querySelector('.unitWeight');
-unitWeight.innerHTML = "".concat(unitOne.type, " <br> ").concat(unitOne.options);
+unitWeight.innerHTML = "".concat(unitOne.type);
 // print unitTwo out on the page
 var unitLiquid = document.querySelector('.unitLiquid');
-unitLiquid.innerHTML = "".concat(unitTwo.type, " <br> ").concat(unitTwo.options);
+unitLiquid.innerHTML = "".concat(unitTwo.type);
 // weight converter
 // links to american to european converter
 var formWeight = document.querySelector('.converter-weight');
@@ -131,6 +131,17 @@ var convertFromWeight = document.querySelector('#convertFromWeight');
 var convertToWeight = document.querySelector('#convertToWeight');
 // inputs
 var amountWeight = document.querySelector('#amountWeight');
+// amount
+var amountLabel = document.querySelector('label[for="amountWeight"]');
+// update input placeholder and label
+var updateAmountLabel = function () {
+    var selectedUnit = convertFromWeight.options[convertFromWeight.selectedIndex].text;
+    amountWeight.placeholder = "Enter amount in ".concat(selectedUnit);
+};
+// update on selection change
+convertFromWeight.addEventListener('change', updateAmountLabel);
+// initial update
+updateAmountLabel();
 // list results
 var ulWeight = document.querySelector('ul');
 var listWeight = new listResults(ulWeight);
@@ -193,6 +204,15 @@ var amountLiquid = document.querySelector('#amountLiquid');
 // list results in ul with a class of .result-list-liquid
 var ulLiquid = document.querySelector('.result-list-liquid');
 var listLiquid = new listResults(ulLiquid);
+// update input placeholder and label 
+var updateAmountLabelLiquid = function () {
+    var selectedUnit = convertFromLiquid.options[convertFromLiquid.selectedIndex].text;
+    amountLiquid.placeholder = "Enter amount in ".concat(selectedUnit);
+};
+// update on selection change
+convertFromLiquid.addEventListener('change', updateAmountLabelLiquid);
+// initial update
+updateAmountLabelLiquid();
 // prints out the result of the convert and keeps the result in the list
 var calculateConvertLiquid = function () {
     // Store the static number of liquids

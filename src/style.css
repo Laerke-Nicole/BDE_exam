@@ -2,6 +2,7 @@
 :root {
   --primary-color: #A3683A;
   --secondary-color: #c871b1;
+  --hover-color: #b075a0;
 
   --white-color: #f9f9f9;
 }
@@ -9,7 +10,7 @@
 
 /* font  */
 :root {
-  --font-family: "cafe-mimi-mvb", sans-serif;
+  --font-family: "brevia", sans-serif;
   --bold-font: 700;
 }
 
@@ -19,15 +20,15 @@
 }
 
 body {
-  background-color: rgb(245, 233, 212);
-  padding: 80px 10%;
+  background: linear-gradient(to bottom, #f5e9d4, #eec8a3);
+  padding: 60px 5%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 
 /* title and subheader */
 .title-subheading {
-  padding-bottom: 60px;
+  padding-bottom: 65px;
   text-align: center;
   padding-right: 10%;
   padding-left: 10%;
@@ -37,12 +38,15 @@ body {
   font-size: 18px;
 }
 
+.unit-title {
+  padding-bottom: 8px;
+}
 
 /* the forms */
 form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .converter-weight {
@@ -59,8 +63,9 @@ form {
 
 select, input {
   padding: 10px 25px;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: var(--white-color);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -70,8 +75,13 @@ button {
   color: var(--white-color);
   margin-top: 16px;
   padding: 15px 25px;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--hover-color);
 }
 
 
@@ -85,16 +95,17 @@ h1, h2, h4 {
   font-weight: var(--bold-font);
 }
 
-h2 {
-  font-size: 36px;
+h1 {
+  font-size: 48px;
+  padding-bottom: 8px;
 }
 
-h1 {
-  font-size: 72px;
+h2 {
+  font-size: 24px;
 }
 
 h4 {
-  font-size: 32px;
+  font-size: 18px;
 }
 
 
@@ -104,11 +115,12 @@ h4 {
 }
 
 .resultWeight, .resultLiquid {
-  padding-bottom: 45px;
-  font-size: 32px;
+  padding-bottom: 40px;
+  font-size: 28px;
 }
 
 .resultWeightHistory, .resultLiquidHistory {
   font-size: 18px;
   font-weight: var(--bold-font);
+  padding-bottom: 8px;
 }
